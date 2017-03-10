@@ -40,9 +40,10 @@ for READ_FILE in $(echo $READS)
 do
 	UNZIPPED_INPUT="${DATABASE}/$(basename $READ_FILE)"
 	gunzip -c -d $READ_FILE > "${UNZIPPED_INPUT}"
-	OUTPUT_FILE="${OUTPUT}/$(basename $READ_FILE).profile"
+	OUTPUT_NAME="$(basename $READ_FILE).profile"
+	OUTPUT_FILE="${OUTPUT}/${OUTPUT_NAME}"
 	PROFILING_OUT="$PROFILING_OUT
-      - value: ${OUTPUT_FILE}
+      - value: ${OUTPUT_NAME}
         type: bioboxes.org:/profling:0.9"
 	eval ${CMD}
 done
