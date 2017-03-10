@@ -42,13 +42,13 @@ do
 	gunzip -c -d $READ_FILE > "${UNZIPPED_INPUT}"
 	OUTPUT_FILE="${OUTPUT}/$(basename $READ_FILE).profile"
 	PROFILING_OUT="$PROFILING_OUT
-      - path: ${OUTPUT_FILE}
-        value: bioboxes.org:/profling:0.9"
+      - value: ${OUTPUT_FILE}
+        type: bioboxes.org:/profling:0.9"
 	eval ${CMD}
 done
 
 cat << EOF > ${OUTPUT}/biobox.yaml
 version: 1.0.0
 arguments:
-    profiling:$PROFILING_OUT
+    - profiling:$PROFILING_OUT
 EOF
